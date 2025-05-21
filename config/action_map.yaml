@@ -1,0 +1,34 @@
+# ───────────────────────────────────────────────────────────────────────────
+#  CRYPTO ANALYST AGENT SWARM – ACTION MAPPING CONFIGURATION
+# ───────────────────────────────────────────────────────────────────────────
+#  Maps consensus scores to actionable recommendations and visual indicators
+# ───────────────────────────────────────────────────────────────────────────
+
+# Consensus score to action mapping
+consensus_to_action:
+  - { max: 40,  action: "de-risk", emoji: "🔴", description: "Consider reducing exposure to crypto assets" }
+  - { min: 40, max: 60, action: "hold", emoji: "🟡", description: "Maintain current positions" }
+  - { min: 60, action: "buy", emoji: "🟢", description: "Consider increasing exposure to crypto assets" }
+
+# Risk flag definitions
+risk_flags:
+  cbbi_high:
+    name: "High CBBI"
+    description: "Crypto Bull/Bear Index is signaling extreme market euphoria"
+    emoji: "⚠️"
+    
+  rainbow_top:
+    name: "Top Rainbow Band" 
+    description: "BTC price is in the top bands of the Rainbow Chart"
+    emoji: "🌈"
+    
+  pi_cycle_top:
+    name: "Pi-Cycle Near Top"
+    description: "Pi-Cycle indicator showing potential market top"
+    emoji: "π"
+
+# Action severity levels
+action_severity:
+  buy: 3
+  hold: 2
+  de-risk: 1

@@ -1,0 +1,215 @@
+# ───────────────────────────────────────────────────────────────────────────
+#  CRYPTO ANALYST AGENT SWARM – MASTER WORKFLOW DEFINITION
+# ───────────────────────────────────────────────────────────────────────────
+#  This file defines the orchestration of the multi-agent swarm, including
+#  scheduled routines, event triggers, and coordination logic.
+# ───────────────────────────────────────────────────────────────────────────
+
+version: '1.0'
+
+# ───────────────────────────────────────────────────────────────────────────
+#  ENVIRONMENT VARIABLES AND API KEYS
+# ───────────────────────────────────────────────────────────────────────────
+
+env:
+  # Market Data API Keys
+  COINGLASS_API_KEY: '${COINGLASS_API_KEY}' # TODO: Add actual key
+  GLASSNODE_API_KEY: '${GLASSNODE_API_KEY}' # TODO: Add actual key
+  CRYPTOCOMPARE_API_KEY: '${CRYPTOCOMPARE_API_KEY}' # TODO: Add actual key
+  COINMETRICS_API_KEY: '${COINMETRICS_API_KEY}' # TODO: Add actual key
+  SANTIMENT_API_KEY: '${SANTIMENT_API_KEY}' # TODO: Add actual key
+  
+  # On-Chain Data API Keys
+  ETHERSCAN_API_KEY: '${ETHERSCAN_API_KEY}' # TODO: Add actual key
+  BLOCKCYPHER_API_KEY: '${BLOCKCYPHER_API_KEY}' # TODO: Add actual key
+  NANSEN_API_KEY: '${NANSEN_API_KEY}' # TODO: Add actual key
+  DUNE_API_KEY: '${DUNE_API_KEY}' # TODO: Add actual key
+  
+  # Social/Web/Sentiment API Keys
+  GOOGLE_TRENDS_API_KEY: '${GOOGLE_TRENDS_API_KEY}' # TODO: Add actual key
+  TWITTER_API_KEY: '${TWITTER_API_KEY}' # TODO: Add actual key
+  REDDIT_API_KEY: '${REDDIT_API_KEY}' # TODO: Add actual key
+  LUNARCRUSH_API_KEY: '${LUNARCRUSH_API_KEY}' # TODO: Add actual key
+  
+  # Infrastructure Settings
+  DATA_STORAGE_PATH: '/data/crypto_swarm'
+  MODEL_WEIGHTS_PATH: '/models/agent_weights'
+  
+  # Communication Channels
+  DISCORD_BOT_TOKEN: '${DISCORD_BOT_TOKEN}' # TODO: Add actual token
+  DISCORD_MARKET_PULSE_CHANNEL_ID: '123456789012345678' # TODO: Add actual channel ID
+
+# ───────────────────────────────────────────────────────────────────────────
+#  DAILY HEARTBEAT SCHEDULE
+# ───────────────────────────────────────────────────────────────────────────
+
+schedules:
+  # The heartbeat_daily schedule runs every day at 08:00 UTC and orchestrates
+  # the full agent swarm workflow sequence
+  heartbeat_daily:
+    cron: '0 8 * * *'  # Run daily at 08:00 UTC
+    workflow: daily_swarm_workflow
+    
+# ───────────────────────────────────────────────────────────────────────────
+#  REAL-TIME TRIGGERS
+# ───────────────────────────────────────────────────────────────────────────
+
+triggers:
+  # Triggers when a significant market indicator crosses a predefined threshold
+  on_threshold_cross:
+    events:
+      - type: 'indicator_threshold'
+        conditions:
+          - metric: 'pi_cycle_top'
+            operator: 'cross_above'
+            value: 1.0
+            cooldown: '24h'
+        workflow: threshold_alert_workflow
+      - type: 'indicator_threshold'
+        conditions:
+          - metric: 'fund_flow_percentage'
+            operator: 'greater_than'
+            value: 20.0
+            cooldown: '12h'
+        workflow: fund_flow_alert_workflow
+  
+  # Triggers when significant macro economic events occur
+  on_macro_event:
+    events:
+      - type: 'scheduled_event'
+        conditions:
+          - event_type: 'fomc_release'
+        workflow: macro_event_workflow
+      - type: 'scheduled_event'
+        conditions:
+          - event_type: 'cpi_release'
+        workflow: macro_event_workflow
+
+# ───────────────────────────────────────────────────────────────────────────
+#  WORKFLOWS
+# ───────────────────────────────────────────────────────────────────────────
+
+workflows:
+  # ───────────────────────────────────────────────────────────────────────────
+  #  DAILY SWARM WORKFLOW - Main daily orchestration sequence
+  # ───────────────────────────────────────────────────────────────────────────
+  daily_swarm_workflow:
+    steps:
+      # Step 1: Refresh all market indicators and data sources
+      - name: refresh_indicators
+        description: "Retrieves and updates all market data, on-chain metrics, and sentiment indicators"
+        run: scripts/refresh_indicators.py
+        output: visible
+        timeout: 15m
+      
+      # Step 2: Run all agents in parallel to generate their individual analyses
+      - name: run_all_agents
+        description: "Execute all agent analysis modules in parallel"
+        run: parallel_tasks
+        output: visible
+        timeout: 30m
+        tasks:
+          - name: crypto_believer_analysis
+            description: "Run The Crypto Believer agent's analysis pipeline"
+            run: agents/run_agent.py --name="The Crypto Believer"
+            output: visible
+          
+          - name: trader_analysis
+            description: "Run The Trader agent's analysis pipeline"
+            run: agents/run_agent.py --name="The Trader"
+            output: visible
+          
+          - name: sentiment_maxi_analysis
+            description: "Run Sentiment Maxi agent's analysis pipeline"
+            run: agents/run_agent.py --name="Sentiment Maxi"
+            output: visible
+          
+          - name: narrative_tracker_analysis
+            description: "Run Narrative Tracker agent's analysis pipeline"
+            run: agents/run_agent.py --name="Narrative Tracker"
+            output: visible
+          
+          - name: financial_nihilist_analysis
+            description: "Run Financial Nihilist agent's analysis pipeline"
+            run: agents/run_agent.py --name="Financial Nihilist"
+            output: visible
+          
+          - name: sol_maxi_analysis
+            description: "Run SOL Maxi agent's analysis pipeline"
+            run: agents/run_agent.py --name="SOL Maxi"
+            output: visible
+          
+          - name: eth_maxi_analysis
+            description: "Run ETH Maxi agent's analysis pipeline"
+            run: agents/run_agent.py --name="ETH Maxi"
+            output: visible
+          
+          - name: btc_maxi_analysis
+            description: "Run BTC Maxi agent's analysis pipeline"
+            run: agents/run_agent.py --name="BTC Maxi"
+            output: visible
+      
+      # Step 3: Aggregate all agent votes and outputs
+      - name: aggregate_votes
+        description: "Collect and aggregate all agent outputs and voting patterns"
+        run: scripts/aggregate_votes.py
+        output: visible
+        timeout: 5m
+        depends_on: run_all_agents
+      
+      # Step 4: Process through the Risk Agent's decision engine
+      - name: risk_engine
+        description: "Process aggregated data through the Risk Agent's decision framework"
+        run: agents/run_agent.py --name="Risk Agent" --mode=evaluation
+        output: visible
+        timeout: 10m
+        depends_on: aggregate_votes
+      
+      # Step 5: Generate the final daily brief with combined insights
+      - name: generate_daily_brief
+        description: "Produce the comprehensive daily market brief with all agent insights"
+        run: scripts/generate_daily_brief.py
+        output: visible
+        timeout: 15m
+        depends_on: risk_engine
+      
+      # Step 6: Post the daily brief to Discord
+      - name: post_daily_brief
+        description: "Post the generated daily brief to the #market-pulse Discord channel"
+        run: scripts/post_to_discord.py --channel_id=${DISCORD_MARKET_PULSE_CHANNEL_ID} --file=daily_brief.md
+        output: visible
+        timeout: 5m
+        depends_on: generate_daily_brief
+
+  # ───────────────────────────────────────────────────────────────────────────
+  #  THRESHOLD ALERT WORKFLOW - Triggered when indicators cross thresholds
+  # ───────────────────────────────────────────────────────────────────────────
+  threshold_alert_workflow:
+    steps:
+      # TODO: Implement threshold alert workflow steps
+      - name: placeholder_threshold_workflow
+        description: "Placeholder for threshold alert workflow"
+        run: echo "Threshold alert workflow triggered"
+        output: visible
+
+  # ───────────────────────────────────────────────────────────────────────────
+  #  FUND FLOW ALERT WORKFLOW - Triggered on significant fund movements
+  # ───────────────────────────────────────────────────────────────────────────
+  fund_flow_alert_workflow:
+    steps:
+      # TODO: Implement fund flow alert workflow steps
+      - name: placeholder_fund_flow_workflow
+        description: "Placeholder for fund flow alert workflow"
+        run: echo "Fund flow alert workflow triggered"
+        output: visible
+
+  # ───────────────────────────────────────────────────────────────────────────
+  #  MACRO EVENT WORKFLOW - Triggered on scheduled macro economic events
+  # ───────────────────────────────────────────────────────────────────────────
+  macro_event_workflow:
+    steps:
+      # TODO: Implement macro event workflow steps
+      - name: placeholder_macro_event_workflow
+        description: "Placeholder for macro event workflow"
+        run: echo "Macro event workflow triggered"
+        output: visible

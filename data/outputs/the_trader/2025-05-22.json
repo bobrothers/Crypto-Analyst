@@ -1,0 +1,11 @@
+{
+  "agent_name": "The Trader",
+  "agent_type": "rule_based",
+  "date": "2025-05-22",
+  "timestamp": "2025-05-22T15:11:14Z",
+  "score": 50,
+  "action": "HOLD",
+  "confidence": 0.41047271977018884,
+  "rationale": "Based on current indicators, I am hold on the market.",
+  "weighted_signals": {}
+}

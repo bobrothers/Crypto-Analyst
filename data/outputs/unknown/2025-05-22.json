@@ -1,0 +1,11 @@
+{
+  "agent_name": "Unknown Agent",
+  "agent_type": "unknown",
+  "date": "2025-05-22",
+  "timestamp": "2025-05-22T15:10:24Z",
+  "score": 50,
+  "action": "HOLD",
+  "confidence": 0.44408812440813933,
+  "rationale": "The combination of CBBI, Rainbow Bands, Pi Cycle suggests a hold position.",
+  "weighted_signals": {}
+}

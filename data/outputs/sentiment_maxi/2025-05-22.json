@@ -1,0 +1,11 @@
+{
+  "agent_name": "Sentiment Maxi",
+  "agent_type": "rule_based",
+  "date": "2025-05-22",
+  "timestamp": "2025-05-22T15:11:14Z",
+  "score": 50,
+  "action": "HOLD",
+  "confidence": 0.5537912777174141,
+  "rationale": "The combination of CBBI, Rainbow Bands, Pi Cycle suggests a hold position.",
+  "weighted_signals": {}
+}

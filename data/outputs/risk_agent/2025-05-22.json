@@ -1,0 +1,11 @@
+{
+  "agent_name": "Risk Agent",
+  "agent_type": "rule_based",
+  "date": "2025-05-22",
+  "timestamp": "2025-05-22T15:11:14Z",
+  "score": 50,
+  "action": "HOLD",
+  "confidence": 0.431932479344394,
+  "rationale": "The combination of CBBI, Rainbow Bands, Pi Cycle suggests a hold position.",
+  "weighted_signals": {}
+}

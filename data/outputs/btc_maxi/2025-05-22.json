@@ -1,0 +1,11 @@
+{
+  "agent_name": "BTC Maxi",
+  "agent_type": "rule_based",
+  "date": "2025-05-22",
+  "timestamp": "2025-05-22T15:11:14Z",
+  "score": 50.0,
+  "action": "HOLD",
+  "confidence": 0.5121924017873353,
+  "rationale": "My analysis shows a score of 50.0, indicating a hold stance.",
+  "weighted_signals": {}
+}

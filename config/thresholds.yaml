@@ -1,0 +1,41 @@
+# ───────────────────────────────────────────────────────────────────────────
+#  CRYPTO ANALYST AGENT SWARM – THRESHOLDS CONFIGURATION
+# ───────────────────────────────────────────────────────────────────────────
+#  This file defines the thresholds used to convert indicator values and
+#  signals into standardized scores used by the agent system.
+# ───────────────────────────────────────────────────────────────────────────
+
+# Signal to score mapping (used by all agents)
+signal_scores:
+  bullish: 75
+  neutral: 50
+  bearish: 25
+
+# Action thresholds
+action_thresholds:
+  strong_buy: 75  # Score >= this value
+  buy: 60         # Score >= this value
+  hold_min: 40    # Score >= this value
+  hold_max: 60    # Score <= this value
+  sell: 40        # Score <= this value
+  strong_sell: 25 # Score <= this value
+
+# Indicator-specific thresholds
+indicators:
+  cbbi:
+    bullish_threshold: 0.3   # Value <= this is bullish
+    bearish_threshold: 0.8   # Value >= this is bearish
+    
+  rainbow_bands:
+    bullish_threshold: 2     # Band <= this is bullish (lower bands)
+    bearish_threshold: 7     # Band >= this is bearish (higher bands)
+    
+  pi_cycle:
+    bullish_threshold: 0.5   # Value <= this is bullish
+    bearish_threshold: 0.95  # Value >= this is bearish
+
+# Confidence levels
+confidence:
+  high: 0.8
+  medium: 0.5
+  low: 0.3

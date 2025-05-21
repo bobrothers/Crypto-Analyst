@@ -1,0 +1,88 @@
+{
+  "date": "2025-05-21",
+  "timestamp": "2025-05-21T15:13:40.310664",
+  "score": 50.0,
+  "action": "hold",
+  "emoji": "\ud83d\udfe1",
+  "agent_votes": [
+    {
+      "name": "Sentiment Maxi",
+      "score": 50,
+      "action": "HOLD",
+      "confidence": 0.5537912777174141,
+      "rationale": "The combination of CBBI, Rainbow Bands, Pi Cycle suggests a hold position."
+    },
+    {
+      "name": "Financial Nihilist",
+      "score": 50,
+      "action": "HOLD",
+      "confidence": 0.43275536895047206,
+      "rationale": "Market conditions indicate a 50.0% bullish sentiment, leading to a hold recommendation."
+    },
+    {
+      "name": "Narrative Tracker",
+      "score": 50,
+      "action": "HOLD",
+      "confidence": 0.4215400469876878,
+      "rationale": "Based on current indicators, I am hold on the market."
+    },
+    {
+      "name": "The Crypto Believer",
+      "score": 50,
+      "action": "HOLD",
+      "confidence": 0.468159645575414,
+      "rationale": "Based on current indicators, I am hold on the market."
+    },
+    {
+      "name": "ETH Maxi",
+      "score": 50,
+      "action": "HOLD",
+      "confidence": 0.4758248664978177,
+      "rationale": "The combination of CBBI, Rainbow Bands, Pi Cycle suggests a hold position."
+    },
+    {
+      "name": "The Trader",
+      "score": 50,
+      "action": "HOLD",
+      "confidence": 0.41047271977018884,
+      "rationale": "Based on current indicators, I am hold on the market."
+    },
+    {
+      "name": "Unknown Agent",
+      "score": 50,
+      "action": "HOLD",
+      "confidence": 0.44408812440813933,
+      "rationale": "The combination of CBBI, Rainbow Bands, Pi Cycle suggests a hold position."
+    },
+    {
+      "name": "BTC Maxi",
+      "score": 50.0,
+      "action": "HOLD",
+      "confidence": 0.5121924017873353,
+      "rationale": "My analysis shows a score of 50.0, indicating a hold stance."
+    },
+    {
+      "name": "Risk Agent",
+      "score": 50,
+      "action": "HOLD",
+      "confidence": 0.431932479344394,
+      "rationale": "The combination of CBBI, Rainbow Bands, Pi Cycle suggests a hold position."
+    },
+    {
+      "name": "SOL Maxi",
+      "score": 50,
+      "action": "HOLD",
+      "confidence": 0.5547175960058175,
+      "rationale": "Market conditions indicate a 50.0% bullish sentiment, leading to a hold recommendation."
+    }
+  ],
+  "distribution": {
+    "distribution": {
+      "HOLD": 10
+    },
+    "agreement_level": 1.0,
+    "majority_action": "HOLD"
+  },
+  "risk_flags": [],
+  "risk_override": false
+}

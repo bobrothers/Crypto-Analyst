@@ -1,0 +1,11 @@
+{
+  "agent_name": "Narrative Tracker",
+  "agent_type": "rule_based",
+  "date": "2025-05-22",
+  "timestamp": "2025-05-22T15:11:14Z",
+  "score": 50,
+  "action": "HOLD",
+  "confidence": 0.4215400469876878,
+  "rationale": "Based on current indicators, I am hold on the market.",
+  "weighted_signals": {}
+}

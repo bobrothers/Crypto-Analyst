@@ -1,0 +1,11 @@
+{
+  "agent_name": "SOL Maxi",
+  "agent_type": "rule_based",
+  "date": "2025-05-22",
+  "timestamp": "2025-05-22T15:11:14Z",
+  "score": 50,
+  "action": "HOLD",
+  "confidence": 0.5547175960058175,
+  "rationale": "Market conditions indicate a 50.0% bullish sentiment, leading to a hold recommendation.",
+  "weighted_signals": {}
+}
